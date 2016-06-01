@@ -5,9 +5,89 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
  </head>
  <body>
- 	This will be dashboard
- 	Welcome {{session['name']}}
- 	<button><a href='/logout'>Logout</a></button>
- 	<p>lets see if this change gets introduced</p>
+
+
+ 	
+ 	  <div class="row">
+		<div class="col-md-1 col-md-offset-10" class="active">
+			<button><a href='/logout'>Logout</a></button>
+		</div>
+		<div class="col-md-11 col-md-offset-1" class="active">
+			<p>Hello {{session['name']}}</p>
+		</div>
+		<div id="table1" class="row">
+			<div class="col-md-10 col-md-offset-1" class="active">
+				<h4>Your Wish List:</h4>
+			</div>
+			<div class="col-md-10 col-md-offset-1" class="active">
+				<table class="table table-bordered table-striped">
+
+					<thead>
+						<tr>
+							<td>Item</td>
+							<td>Added by</td>
+							<td>Date Added</td>
+							<td>Action</td>
+						</tr>
+					</thead>
+					<tbody>
+						{%for wish_item in wish_items%}
+							<tr>
+								<td><a href='/'>{{wish_item['item_name']}}</a></td>
+								<td>{{wish_item['name']}}</td>
+								<td>{{wish_item['created_at']}}</td>
+								<td><form action='/rm_wish_list/{{wish_item['id']}}', method='post'>
+									<input type="submit" value="Remove from my Wishlist">
+								</form></td>
+							</tr>
+						{%endfor%}
+						{%for item in items2%}
+							<tr>
+								<td><a href='/'>{{item['item_name']}}</a></td>
+								<td>{{item['added_by']}}</td>
+								<td>{{item['created_at']}}</td>
+								<td><form action='/delete/{{item['id']}}', method='post'>
+									<input type="submit" value="Delete">
+								</form></td>
+							</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+			</div>
+
+		<div id="table2" class="row">
+			<div class="col-md-10 col-md-offset-1" class="active">
+				<h4>Other users Wish List:</h4>
+			</div>
+			<div class="col-md-10 col-md-offset-1" class="active">
+				<table class="table table-bordered table-striped">
+
+					<thead>
+						<tr>
+							<td>Item</td>
+							<td>Added by</td>
+							<td>Date Added</td>
+							<td>Action</td>
+						</tr>
+					</thead>
+					<tbody>
+						{%for item in items%}
+							<tr>
+								<td><a href='/'>{{item['item']}}</a></td>
+								<td>{{item['name']}}</td>
+								<td>{{item['created_at']}}</td>
+								<td><form action='/wish_items/{{item['id']}}', method='post'>
+									<input type="submit" value="Add to my Wishlist">
+								</form></td>
+							</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+			</div>
+		</div>
+			<div class="col-md-1 col-md-offset-10" class="active">
+				<button><a href='/add_item'>Add Item</a></button>
+			</div>
+		</div>
  </body>
  </html>

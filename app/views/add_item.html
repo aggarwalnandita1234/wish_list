@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
+ </head>
+ <body>
+ 	
+ 	  <div class="row">
+		<div class="col-md-2 col-md-offset-10" class="active">
+			<nav class="navbar navbar-default navbar-right">
+			  <div class="container">
+			    	<a href='/dashboard'>Home</a>
+			    	<a href='/logout'>Logout</a>
+			  </div>
+			</nav>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-9 col-md-offset-3" class="active">
+			<h4>Create a New Wish List Item</h4><br><br>
+			<form action='/create_item' method='post'>
+				Item/Product:<input type='text' name='item'><br><br>
+				<div class="col-md-8 col-md-offset-3" class="active">
+					<input type='submit' value="Add">
+				</div>
+			</form>
+			
+		</div>
+		</div>
+</body>
+</html>
